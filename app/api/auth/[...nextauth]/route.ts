@@ -1,9 +1,15 @@
-import { NextResponse } from "next/server";
+import NextAuth, { CallbacksOptions } from "next-auth";
+import GitHubProvider from "next-auth/providers/github";
 
-export async function GET() {
-  return NextResponse.json({ message: "Auth handler not configured yet" }, { status: 501 });
-}
+const authOptions = {
+  providers: [
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID ?? "",
+      clientSecret: process.env.GITHUB_SECRET ?? "",
+    }),
+  ],
+};
 
-export async function POST() {
-  return NextResponse.json({ message: "Auth handler not configured yet" }, { status: 501 });
-}
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST};
