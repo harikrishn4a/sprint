@@ -116,7 +116,7 @@ async function main() {
       answersJson: {
         wins: ["Dashboard shell"],
         blockers: ["Awaiting GitHub token scopes"],
-      },
+        },
       durationSeconds: 420,
       voiceSessionId: session.id,
     },
@@ -131,7 +131,7 @@ async function main() {
     include: {
       streak: true,
       projects: {
-        include: {
+    include: {
           standups: {
             orderBy: { date: "desc" },
             take: 1,
